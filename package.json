@@ -1,0 +1,18 @@
+{
+  "name": "iksa-gc",
+  "version": "1.0.0",
+  "description": "Ground Control software for IKSA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "krpc.js": "git+https://github.com/lucaelin/krpc.js.git",
+    "request": "^2.88.2"
+  }
+}
