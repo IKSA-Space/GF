@@ -4,12 +4,14 @@
   "description": "Ground Control software for IKSA",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js",
+    "genDoc": "jsdoc index.js -t node_modules/clean-jsdoc-theme"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clean-jsdoc-theme": "^3.2.7",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "krpc.js": "git+https://github.com/lucaelin/krpc.js.git",

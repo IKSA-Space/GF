@@ -1,5 +1,12 @@
+
+/* Main Ground Facilities script*/
+// @ts-check
+
+
 import KRPC from './node_modules/krpc.js/lib/KRPC.js';
-const express = require('express');
+import express from 'express';
+const authKey = "IKSA_AUTH_rgehouiougr"
+
 
 const options = {
     name: 'Ground',    // (default)
@@ -15,7 +22,7 @@ const gameData = {
 }
 
 const vehicle = {
-
+    object: null,
 }
 const states = {
     fuel: false,
@@ -25,14 +32,24 @@ const states = {
 }
 
 const functions = {
-
+    /**
+     * Toggles an action group
+     * @param {1|2|3|4|5|6|7|8|9|10} num 
+     */
+    actGroup: function(num){
+        gameData.control.toggle_action_group(num);
+    }
 }
+
 
 async function init(){
     await krpc.load()
     gameData.sc = krpc.services.spaceCenter;
     gameData.vessel = await gameData.sc.activeVessel;
+    vehicle.object = gameData.vessel;
+    gameData.control = await gameData.vessel.control;
 }
+init()
 
 /*krpc.load().then(async () => {
     let sc = krpc.services.spaceCenter;
@@ -50,3 +67,20 @@ async function init(){
     let stream = vessel.stream('situation', (situation) => console.log(situation));
     setTimeout(() => stream.remove(), 60 * 1000);
 }).catch (console.error)*/
+
+
+
+let webApp = express();
+webApp.get('/status', function(req,res){
+    res.send(JSON.stringify(status, null, 2));
+})
+webApp.post("/action/toggleVent", function(req,res){
+    if(req.query){
+        if(req.query.auth == authKey){
+
+        }
+    }else{
+        res.sendStatus(400);
+    }
+})
+webApp.listen(3000);
