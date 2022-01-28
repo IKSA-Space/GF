@@ -10,7 +10,7 @@ const authKey = "IKSA_AUTH_rgehouiougr"
 
 const options = {
     name: 'Ground',    // (default)
-    host: '144.138.103.239',  // (default)
+    host: '',  // (default)
     rpcPort: 49990,     // (default)
     streamPort: 49991,  // (default)
 };
